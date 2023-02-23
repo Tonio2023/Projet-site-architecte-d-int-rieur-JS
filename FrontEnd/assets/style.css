@@ -126,6 +126,7 @@ li:hover {
 	margin-bottom: 1em;
 }
 .gallery {
+	background-color: aqua;
 	width: 100%;
 	display: grid;
 	grid-template-columns: 1fr 1fr 1fr;

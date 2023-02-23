@@ -1,13 +1,16 @@
 fetch('http://localhost:5678/api/works')
-  .then(response => {
-    return response.json();
-  })
-  .then(data => {
-    console.log(data);
+.then(response => {
+  return response.json();
+})
+.then(data => {
+  console.log(data);
 
-    const firstElement = data[0];
-    const imgUrl = firstElement.imageUrl;
-    const captionText = 'Abat-jour Tahina';
+  const gallery = document.querySelector('.gallery');
+
+  // Boucle sur chaque élément du tableau de données
+  data.forEach(element => {
+    const imgUrl = element.imageUrl;
+    const captionText = element.title;
 
     // Créer un nouvel élément <figure>
     const figure = document.createElement('figure');
@@ -23,10 +26,7 @@ fetch('http://localhost:5678/api/works')
     figure.appendChild(img);
     figure.appendChild(figcaption);
 
-    // Sélectionner la <div> avec la classe ".gallery"
-    const gallery = document.querySelector('.gallery');
-
     // Insérer la figure dans la <div>
     gallery.appendChild(figure);
-
   });
+});

@@ -140,16 +140,16 @@ li:hover {
 	background-color: transparent;
 	color: #1D6154;
 }
-.Tous {
+#all {
 	width: 100px;
 }
-.Objets {
+#Objets {
 	width: 100px;
 }
-.Appartements {
+#Appartements {
 	width: 157px;
 }
-.Hôtels {
+#Hôtels {
 	width: 198px;
 }
 .item {

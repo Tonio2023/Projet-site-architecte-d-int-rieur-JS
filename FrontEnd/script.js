@@ -63,6 +63,4 @@ fetch('http://localhost:5678/api/works')
       // Afficher les travaux avec la categoryId 3 (Hotels & restaurants)
       afficherWorks(3);
     });
-
-  
   });

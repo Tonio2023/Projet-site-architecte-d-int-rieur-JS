@@ -152,15 +152,6 @@ li:hover {
 #Hotels {
 	width: 198px;
 }
-.item {
-	display: none;
-  }
-  
-  .show {
-	display: block;
-  }
-
-
 #introduction p {
 	margin-bottom: 0.5em;
 }

@@ -54,9 +54,11 @@ body {
 	font-size: 14px;
 }
 header {
+	font-family: 'Work Sans' ;
+	font-size: 14px;
 	display: flex;
 	justify-content: space-between;
-	margin: 50px 0
+	margin:50px 0 139px 0
 }
 section {
 	margin: 50px 0
@@ -93,6 +95,11 @@ nav ul {
 nav li {
 	padding: 0 10px;
 	font-size: 1.2em;
+}
+nav img {
+    width: 19px;
+    height: 19px;
+    margin-top: 3px;
 }
 
 li:hover {
@@ -218,4 +225,60 @@ footer nav ul {
 	display: flex;
 	justify-content: flex-end;
 	margin: 2em
+}
+
+/************************ Page de Connexion ***********************/
+.navLog {
+}
+ul {
+	gap:25px;
+}
+#loginText {
+	font-weight: bolder;
+}
+.mainLog {
+	display: flex;
+	justify-content: center;
+	height: 842px;
+}
+.logSection {
+	width: 379px;
+	height: 367px;
+	display: flex;
+	flex-direction: column;
+	margin: 0;
+	margin-top: 90px;
+}
+.logh2 {
+	text-align: center;
+}
+.logSection form {
+	display: flex;
+	flex-direction: column;
+	margin-top: 37px;
+}
+.logSection input {
+	height: 50px;
+	font-size: 1.2em;
+	border: none;
+	box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
+}
+.logSection label {
+	margin: 2em 0 1em 0;
+}
+.logSection input[type="submit"] {
+	margin:auto;
+	margin-top: 37px;
+}
+.passForgot {
+	margin: auto;
+	margin-top: 28px;
+	font-family: 'Work Sans';
+	font-style: normal;
+	font-weight: 500;
+	font-size: 14px;
+	line-height: 16px;
+	text-decoration-line: underline;
+	color: #3D3D3D
+
 }

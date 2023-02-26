@@ -11,6 +11,39 @@
 	<link rel="stylesheet" href="./assets/style.css">
 </head>
 <body>
+    <header>
+        <h1>Sophie Bluel <span>Architecte d'inteérieur</span></h1>
+        <nav class="navLog">
+            <ul class="ulLog">
+                <li>projets</li>
+                <li>contact</li>
+                <li id="loginText">login</li>
+                <li><img src="./assets/icons/instagram.png" alt="Instagram"></li>
+            </ul>
+        </nav>
+    </header>
+    <main class="mainLog">
+        <section class="logSection">
+            <h2 class="logh2">Log In</h2>
+            <form id="connexion" action="http://localhost:5678/api/users/login" method="post">
+                <label for="email">Email</label>
+			    <input type="email" name="email" id="email">
+                <label for="pass">Mot de passe</label>
+                <input type="password" id="pass" name="password">
+                <input type="submit" value="Se connecter">
+            </form>
+            <a href="#" class="passForgot">Mot de passe oublié</a>
+        </section>
+    </main>
     
+    <footer>
+        <nav>
+            <ul>
+                <li>Mentions Légales</li>
+            </ul>
+        </nav>
+    </footer>
+<script src="script.js"></script>
+
 </body>
 </html>

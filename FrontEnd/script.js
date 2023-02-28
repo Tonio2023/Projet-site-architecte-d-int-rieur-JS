@@ -69,6 +69,7 @@ fetch('http://localhost:5678/api/works')
 
 
   // Connexion utilisateur 
+  
   const form = document.querySelector('#connexion'); // sélectionnez le formulaire par son ID
   form.addEventListener('submit', async (e) => { // ajouter un événement de soumission du formulaire
     e.preventDefault(); // empêcher le comportement par défaut de la soumission du formulaire
@@ -89,11 +90,21 @@ fetch('http://localhost:5678/api/works')
         },
         body: JSON.stringify(data) // convertir l'objet en une chaîne JSON et l'inclure dans la requête POST
       });
+
+      if (!response.ok) { // vérifier si la réponse de l'API indique une erreur
+        alert('Erreur dans l\'identifiant ou le mot de passe'); // affiche le message d'erreur
+      } else {
+        window.location.replace('admin.html')
+      }
+      
       const responseData = await response.json(); // extraire les données de la réponse
+
+      
+      
   
       console.log(responseData); // faire quelque chose avec les données de la réponse
   
     } catch (err) {
-      console.error(err);
+      console.error(err.message);
     }
   });

@@ -12,15 +12,17 @@
 </head>
 <body>
     <header>
-        <h1>Sophie Bluel <span>Architecte d'inteérieur</span></h1>
-        <nav class="navLog">
-            <ul class="ulLog">
-                <li>projets</li>
-                <li>contact</li>
-                <li id="loginText">login</li>
-                <li><img src="./assets/icons/instagram.png" alt="Instagram"></li>
-            </ul>
-        </nav>
+        <div class="line2">
+            <h1>Sophie Bluel <span>Architecte d'inteérieur</span></h1>
+            <nav class="navLog">
+                <ul class="ulLog">
+                    <li><a href="#portfolio">projets</a></li>
+			        <li><a href="#contact">contact</a></li>
+			        <li id="loginText"><a href="Login.html">login</a></li>
+                    <li><a href=""><img src="./assets/icons/instagram.png" alt="Instagram"></a></li>
+                </ul>
+            </nav>
+        </div>
     </header>
     <main class="mainLog">
         <section class="logSection">
@@ -28,7 +30,7 @@
             <form id="connexion" action="http://localhost:5678/api/users/login" method="post">
                 <label for="email">Email</label>
 			    <input type="email" name="email" id="email">
-                <label for="pass">Mot de passe</label>
+                <label for="password">Mot de passe</label>
                 <input type="password" id="pass" name="password">
                 <input type="submit" value="Se connecter">
             </form>

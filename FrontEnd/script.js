@@ -34,6 +34,7 @@ fetch('http://localhost:5678/api/works')
       });
     }
 
+    
     // Afficher tous les travaux par défaut
     afficherWorks('All');
 
@@ -67,7 +68,9 @@ fetch('http://localhost:5678/api/works')
 
   });
 
-
+  window.onload = function() {
+    document.getElementById("All").classList.add("active");
+  }
   // Connexion utilisateur 
   
   const form = document.querySelector('#connexion'); // sélectionnez le formulaire par son ID
@@ -99,8 +102,6 @@ fetch('http://localhost:5678/api/works')
       
       const responseData = await response.json(); // extraire les données de la réponse
 
-      
-      
   
       console.log(responseData); // faire quelque chose avec les données de la réponse
   

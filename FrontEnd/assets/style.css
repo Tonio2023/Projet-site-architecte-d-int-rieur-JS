@@ -58,14 +58,15 @@ header {
 	font-size: 14px;
 	display: flex;
 	justify-content: space-between;
-	margin:50px 0 139px 0
+	margin:0 0 139px 0
 }
 section {
 	margin: 50px 0
 }
 .line2 {
-	width: 1140px;
-	margin-left: 12%;
+	width: 80%;
+	margin-left: 11%;
+	margin-top: 50px;
 }
 
 h1{
@@ -139,7 +140,23 @@ a:hover {
 	gap: 10px;
 	height: 37px;
 }
+.activeBut {
+	border: 1px solid #1D6154;
+	border-radius: 60px;
+	font-family: 'Syne';
+	font-style: normal;
+	font-weight: 300;
+	font-size: 15px;
+	line-height: 19px;
+	text-align: center;
+	background-color: #1D6154;
+	color:aliceblue;
+}
 .boutons :focus {
+	background-color: #1D6154;
+	color:aliceblue;
+}
+.active {
 	background-color: #1D6154;
 	color:aliceblue;
 }
@@ -155,9 +172,11 @@ a:hover {
 	background-color: transparent;
 	color: #1D6154;
 }
+
 #All {
 	width: 100px;
 }
+
 #Objets {
 	width: 100px;
 }
@@ -296,14 +315,81 @@ ul {
 	display: flex;
 	flex-direction: column;
 }
+#buttonAdmin {
+	margin: 0;
+	background: #FFFFFF;
+	border-radius: 60px;
+	color: black;
+	height: 38px;
+	width: 15%;
+	font-family: Work Sans;
+	font-size: 14px;
+	font-weight: 500;
+	line-height: 16px;
+	letter-spacing: 0em;
+	text-align: center;
+	margin-top: 10px;
+	border-color: #090909;
+
+
+}
 .editionLine1 {
 	color: white;
 	background-color: black;
 	height: 59px;
-	margin-bottom: 38px;
+	margin-bottom: -10px;
 	max-width: 100%;
+	display: flex;
+	justify-content: center;
 }
 .line2 {
 	display: flex;
 	justify-content: space-between;
+}
+.pEdit {
+	padding-top: 22px;
+	margin-right: 18px;
+	font-size: 12px;
+	
+}
+header i {
+	padding-top: 19px;
+	font-size: 15px;
+	margin-right: 7px;
+}
+.introEdit {
+	display: flex;
+	padding-left: 58px;
+	padding-top: 10px;
+}
+.introEdit i {
+	font-size: 18px;
+}
+.introEdit p {
+	margin-left: 6px;
+	margin-top: 2px;
+}
+
+.projetsEdit {
+	display: flex;
+	margin-bottom: 60px;
+}
+.projetsEdit h2 {
+	width: 17%;
+	margin-left: 41%;
+	margin-right: 20px;
+}
+.projetsEdit i {
+	margin-top: 8px;
+	margin-left: 10px;
+	font-size: 18px;
+}
+.projetsEdit a {
+	margin-top: 10px;
+	text-decoration: none;
+	margin-left: 6px;
+	color: #090909;
+}
+.portfolioEdit {
+	margin-top: 100px;
 }

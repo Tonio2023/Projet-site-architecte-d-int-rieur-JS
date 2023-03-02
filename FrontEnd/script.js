@@ -33,44 +33,52 @@ fetch('http://localhost:5678/api/works')
         gallery.appendChild(figure);
       });
     }
-
+    
+    //  sélectionner un bouton et désélectionner les autres
+    function selectButton(selectedButton) {
+      filterButtons.forEach(button => {
+        if (afficherWorks === selectedButton) {
+          button.classList.add('active');
+        } else {
+          button.classList.remove('active');
+        }
+      });
+    }
     
     // Afficher tous les travaux par défaut
     afficherWorks('All');
-
+    
     // Ajouter un écouteur d'événement sur le bouton "Tous"
     const allButton = document.getElementById('All');
     allButton.addEventListener('click', () => {
       // Afficher tous les travaux
       afficherWorks('All');
     });
-
+    
     // Ajouter un écouteur d'événement sur le bouton "Objets"
     const objetsButton = document.getElementById('Objets');
     objetsButton.addEventListener('click', () => {
       // Afficher les travaux avec la categoryId 1 (Objets)
       afficherWorks(1);
     });
-
+    
     // Ajouter un écouteur d'événement sur le bouton "Appartements"
     const appartementsButton = document.getElementById('Appartements');
     appartementsButton.addEventListener('click', () => {
       // Afficher les travaux avec la categoryId 2 (Appartements)
       afficherWorks(2);
     });
-
+    
     // Ajouter un écouteur d'événement sur le bouton "Hotels & restaurants"
     const hotelsButton = document.getElementById('Hotels');
     hotelsButton.addEventListener('click', () => {
       // Afficher les travaux avec la categoryId 3 (Hotels & restaurants)
       afficherWorks(3);
     });
-
+    
   });
+  
 
-  window.onload = function() {
-    document.getElementById("All").classList.add("active");
-  }
   // Connexion utilisateur 
   
   const form = document.querySelector('#connexion'); // sélectionnez le formulaire par son ID
@@ -109,3 +117,8 @@ fetch('http://localhost:5678/api/works')
       console.error(err.message);
     }
   });
+
+
+
+
+  

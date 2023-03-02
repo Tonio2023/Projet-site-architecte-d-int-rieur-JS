@@ -140,7 +140,7 @@ a:hover {
 	gap: 10px;
 	height: 37px;
 }
-.activeBut {
+.stylebutt {
 	border: 1px solid #1D6154;
 	border-radius: 60px;
 	font-family: 'Syne';
@@ -156,10 +156,7 @@ a:hover {
 	background-color: #1D6154;
 	color:aliceblue;
 }
-.active {
-	background-color: #1D6154;
-	color:aliceblue;
-}
+
 .stylebutt {
 	border: 1px solid #1D6154;
 	border-radius: 60px;
@@ -172,7 +169,10 @@ a:hover {
 	background-color: transparent;
 	color: #1D6154;
 }
-
+.filter-button.active {
+	background-color: #333;
+	color: #fff;
+  }
 #All {
 	width: 100px;
 }

@@ -8,18 +8,19 @@
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Work+Sans&display=swap" rel="stylesheet">
 	<meta name="description" content="">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 	<link rel="stylesheet" href="./assets/style.css">
 	<link rel="stylesheet" href="./assets/editstyle.css">
 </head>
 <body>
 <header class="headerEditMode">
-    <div class="editionLine1">
-        <p>Mode édition</p>
-        
-        
+    <div class="editionLine1 admin-only">
+		<i class="fa-regular fa-pen-to-square"></i>
+        <p class="pEdit">Mode édition</p>
+		<input type="submit" id="buttonAdmin" value="publier les changements">
     </div>
     <div class="line2">
-	    <h1>Sophie Bluel <span>Architecte d'inteérieur</span></h1>
+	    <h1>Sophie Bluel <span>Architecte d'intérieur</span></h1>
 	    <nav>
 		    <ul>
                 <li><a href="#portfolio">projets</a></li>
@@ -34,6 +35,9 @@
 	<section id="introduction">
 		<figure>
 			<img src="./assets/images/sophie-bluel.png" alt="">
+			<div class="introEdit"><i class="fa-regular fa-pen-to-square"></i>
+				<p>modifier</p>
+			</div>
 		</figure>
 		<article>
 			<h2>Designer d'espace</h2>
@@ -42,15 +46,12 @@
 			<p>En cas de besoin, une équipe pluridisciplinaire peut-être constituée : architecte DPLG, décorateur(trice)</p>
 		</article>
 	</section>
-	<section id="portfolio">
-		<h2>Mes Projets</h2>
-		<div class="boutons" id="filter-buttons">
-				<button id="All" class="stylebutt filter-button active" data-filter="All">Tous</button>
-				<button id="Objets" class="stylebutt filter-button active" data-filter="Objets">Objets</button>
-				<button id="Appartements" class="stylebutt filter-button active" data-filter="Appartements">Appartements</button>
-				<button id="Hotels" class="stylebutt filter-button active" data-filter="Hôtels">Hôtels & restaurants</button>
+	<section id="portfolio" class="portfolioEdit">
+		<div class="projetsEdit">
+			<h2>Mes Projets</h2>
+			<i class="fa-regular fa-pen-to-square"></i>
+			<a href="#">modifier</a>
 		</div>
-
 		<div class="gallery" id="figures-container">
 			
 		</div>

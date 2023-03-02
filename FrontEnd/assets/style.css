@@ -169,10 +169,17 @@ a:hover {
 	background-color: transparent;
 	color: #1D6154;
 }
+<<<<<<< HEAD
 .active {
 	background-color: #1D6154;
 	color: #fff;
 }
+=======
+.filter-button.active {
+	background-color: #333;
+	color: #fff;
+  }
+>>>>>>> 140b17b88292f9b9844d1322d5ef8d66ae9025d6
 #All {
 	width: 100px;
 }

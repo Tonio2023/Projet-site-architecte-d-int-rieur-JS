@@ -10,42 +10,52 @@
 	<meta name="description" content="">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 	<link rel="stylesheet" href="./assets/style.css">
+	<link rel="stylesheet" href="./assets/editstyle.css">
 </head>
 <body>
 <header class="headerEditMode">
-	<div class="line2">
-		<h1>Sophie Bluel <span>Architecte d'intérieur</span></h1>
-		<nav>
-			<ul id="ulLog">
-				<li><a href="#portfolio">projets</a></li>
-				<li><a href="#contact">contact</a></li>
-				<li><a href=""><img src="./assets/icons/instagram.png" alt="Instagram"></a></li>
-			</ul>
-		</nav>
-	</div>
+<<<<<<< HEAD
+    <div class="editionLine1 admin-only">
+=======
+    <div class="editionLine1">
+>>>>>>> 140b17b88292f9b9844d1322d5ef8d66ae9025d6
+		<i class="fa-regular fa-pen-to-square"></i>
+        <p class="pEdit">Mode édition</p>
+		<input type="submit" id="buttonAdmin" value="publier les changements">
+    </div>
+    <div class="line2">
+	    <h1>Sophie Bluel <span>Architecte d'intérieur</span></h1>
+	    <nav>
+		    <ul>
+                <li><a href="#portfolio">projets</a></li>
+                <li><a href="#contact">contact</a></li>
+                <li><a href="Login.html">logout</a></li>
+                <li><a href=""><img src="./assets/icons/instagram.png" alt="Instagram"></a></li>
+            </ul>
+	    </nav>
+    </div>
 </header>
 <main>
 	<section id="introduction">
 		<figure>
 			<img src="./assets/images/sophie-bluel.png" alt="">
+			<div class="introEdit"><i class="fa-regular fa-pen-to-square"></i>
+				<p>modifier</p>
+			</div>
 		</figure>
 		<article>
 			<h2>Designer d'espace</h2>
 			<p>Je raconte votre histoire, je valorise vos idées. Je vous accompagne de la conception à la livraison finale du chantier.</p>
-			<p>Chaque projet sera étudié en commun, de façon à mettre en valeur les volumes, les matières et les couleurs dans le respect de l’esprit des lieux, et le choix adapté des matériaux. Le suivi du chantier sera assuré dans le souci du détail, le respect du planning et du budget.</p>
-			<p>En cas de besoin, une équipe pluridisciplinaire peut être constituée : architecte DPLG, décorateur(trice).</p>
+			<p>Chaque projet sera étudié en commun, de façon à mettre en valeur les volumes, les matières et les couleurs dans le respect de l’esprit des lieux et le choix adapté des matériaux. Le suivi du chantier sera assuré dans le souci du détail, le respect du planning et du budget.</p>
+			<p>En cas de besoin, une équipe pluridisciplinaire peut-être constituée : architecte DPLG, décorateur(trice)</p>
 		</article>
 	</section>
-	<section id="portfolio">
-		<h2>Mes Projets</h2>
-
-		<div class="boutons" id="filter-buttons">
-				<button id="All" class="stylebutt filter-button" data-filter="All" selected>Tous</button>
-				<button id="Objets" class="stylebutt filter-button" data-filter="Objets">Objets</button>
-				<button id="Appartements" class="stylebutt filter-button" data-filter="Appartements">Appartements</button>
-				<button id="Hotels" class="stylebutt filter-button" data-filter="Hôtels">Hôtels & restaurants</button>
+	<section id="portfolio" class="portfolioEdit">
+		<div class="projetsEdit">
+			<h2>Mes Projets</h2>
+			<i class="fa-regular fa-pen-to-square"></i>
+			<a href="#">modifier</a>
 		</div>
-
 		<div class="gallery" id="figures-container">
 			
 		</div>

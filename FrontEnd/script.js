@@ -1,4 +1,5 @@
 
+
 // Récupérer les boutons filtres
 const filterButtons = document.querySelectorAll('.filter-button');
 
@@ -91,18 +92,13 @@ fetch('http://localhost:5678/api/works')
     });
 
   });
-
-
-  /////////////////////////////// MODE  ADMINISTRATEUR ///////////////////////////////////
-
-
   
-  // Fonction pour récupérer le token d'authentification depuis le localStorage
-  function getAuthToken() {
-    return localStorage.getItem('token');
-  }
+
+  // Connexion utilisateur 
   
-  //  si l'utilisateur est connecté en tant qu'administrateur, création des éléments et div filtres 
+  const form = document.querySelector('#connexion'); // sélectionnez le formulaire par son ID
+  form.addEventListener('submit', async (e) => { // ajouter un événement de soumission du formulaire
+    e.preventDefault(); // empêcher le comportement par défaut de la soumission du formulaire
   
   if (getAuthToken()) {
     // Changer le bouton de connexion en bouton de déconnexion
@@ -138,58 +134,32 @@ fetch('http://localhost:5678/api/works')
   
    const tokenKey = 'auth-token';
   
-  function toggleLoginState() {
-    const authToken = getAuthToken();
-    
-    if (authToken) {
-      // L'utilisateur est connecté en tant qu'administrateur, donc afficher les fonctions d'édition
-      // Changer le bouton de connexion en bouton de déconnexion
-    const header = document.querySelector('header');
-    const line2 = header.querySelector('.line2');
-    const nav = document.querySelector('nav')
-    const ulElement = document.getElementById('ulLog')
-    const logoutDiv = document.createElement('div');
-    logoutDiv.className = 'logout';
-    const logoutLink = document.createElement('a');
-    logoutLink.textContent = 'logout';
-    logoutLink.href = '#';
-    logoutLink.addEventListener('click', function() {
-      localStorage.clear();
-      window.location.reload();
-    });
-    logoutLink.classList.add("navA");
-    logoutDiv.appendChild(logoutLink);
-    ulElement.insertBefore(logoutDiv, ulElement.children[2]);
-    nav.appendChild(ul)
-    line2.appendChild(nav)
-    header.appendChild(line2)
+    try {
+      const response = await fetch('http://localhost:5678/api/users/login', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json' // définir le type de contenu de la requête comme JSON
+        },
+        body: JSON.stringify(data) // convertir l'objet en une chaîne JSON et l'inclure dans la requête POST
+      });
 
-    
-  } else {
-    // L'utilisateur n'est pas connecté en tant qu'administrateur, donc afficher LOGIN
-    const header = document.querySelector('header');
-    const line2 = header.querySelector('.line2');
-    const nav = document.querySelector('nav')
-    const ulElement = document.getElementById('ulLog')
-    const logoutDiv = document.createElement('div');
-    logoutDiv.className = 'logout';
-    const logoutLink = document.createElement('a');
-    logoutLink.textContent = 'login';
-    logoutLink.href = 'Login.html';
-    logoutLink.addEventListener('click', function() {
-    localStorage.removeItem(tokenKey);
-    window.location.reload();
-    });
-    logoutLink.classList.add("navA");
-    logoutDiv.appendChild(logoutLink);
-    ulElement.insertBefore(logoutDiv, ulElement.children[2]);
-    nav.appendChild(ul)
-    line2.appendChild(nav)
-    header.appendChild(line2)
+      if (!response.ok) { // vérifier si la réponse de l'API indique une erreur
+        alert('Erreur dans l\'identifiant ou le mot de passe'); // affiche le message d'erreur
+      } else {
+        window.location.replace('admin.html')
+      }
+      
+      const responseData = await response.json(); // extraire les données de la réponse
 
-  }
-}
-
-toggleLoginState();
+  
+      console.log(responseData); // faire quelque chose avec les données de la réponse
+  
+    } catch (err) {
+      console.error(err.message);
+    }
+  });
 
 
+
+
+  

@@ -1,5 +1,4 @@
 
-
 // Récupérer les boutons filtres
 const filterButtons = document.querySelectorAll('.filter-button');
 
@@ -94,48 +93,104 @@ fetch('http://localhost:5678/api/works')
   });
 
 
+  /////////////////////////////// MODE  ADMINISTRATEUR ///////////////////////////////////
 
-  // Connexion utilisateur 
-  const form = document.querySelector('#connexion'); // sélectionnez le formulaire par son ID
-  form.addEventListener('submit', async (e) => { // ajouter un événement de soumission du formulaire
-    e.preventDefault(); // empêcher le comportement par défaut de la soumission du formulaire
+
   
-    const email = document.querySelector('#email').value; // récupérer la valeur du champ email
-    const password = document.querySelector('#pass').value; // récupérer la valeur du champ mot de passe
+  // Fonction pour récupérer le token d'authentification depuis le localStorage
+  function getAuthToken() {
+    return localStorage.getItem('token');
+  }
   
-    const data = {
-      email: email,
-      password: password
-    }; // créer un objet avec les propriétés email et password et leurs valeurs correspondantes
+  //  si l'utilisateur est connecté en tant qu'administrateur, création des éléments et div filtres 
   
-    try {
-      const response = await fetch('http://localhost:5678/api/users/login', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json' // définir le type de contenu de la requête comme JSON
-        },
-        body: JSON.stringify(data) // convertir l'objet en une chaîne JSON et l'inclure dans la requête POST
-      });
+  if (getAuthToken()) {
+    // Changer le bouton de connexion en bouton de déconnexion
+    // L'utilisateur est connecté en tant qu'administrateur, donc afficher les fonctions d'édition
+    const header = document.querySelector('header');
+    const editionDiv = document.createElement('div');
+    editionDiv.classList.add('editionLine1');
+    editionDiv.innerHTML = `
+    <i class="fa-regular fa-pen-to-square"></i>
+    <p class="pEdit">Mode édition</p>
+    <input type="submit" id="buttonAdmin" value="publier les changements">
+    `;
+    header.insertBefore(editionDiv, header.firstChild);
+    
+    const figure = document.querySelector('figure');
+    const introEdit = document.createElement('div');
+    introEdit.className = 'introEdit';
+    introEdit.innerHTML = '<i class="fa-regular fa-pen-to-square"></i><p>modifier</p>';
+    figure.insertBefore(introEdit, figure.children[1]);
+    
+    const projetEditDiv = document.querySelector('.projetsEdit');
+    const editIcon = document.createElement('i');
+    editIcon.classList.add('fa-regular', 'fa-pen-to-square');
+    const editLink = document.createElement('a');
+    editLink.href = '#';
+    editLink.onclick = "function openModal()";
+    editLink.textContent = 'modifier';
+    projetEditDiv.insertBefore(editLink, projetEditDiv.lastChild.nextSibling);
+    projetEditDiv.insertBefore(editIcon, projetEditDiv.lastChild.nextSibling);
 
-      if (!response.ok) { // vérifier si la réponse de l'API indique une erreur
-        alert('Erreur dans l\'identifiant ou le mot de passe'); // affiche le message d'erreur
-      } else {
-        window.location.replace('index.html')
-      }
-      const responseData = await response.json(); // extraire les données de la réponse
-      
+    document.getElementById("filters").classList.add("none");
 
-      localStorage.setItem('token',responseData.token) // stockage du token dans le localstorage
+  }
+  
+   const tokenKey = 'auth-token';
+  
+  function toggleLoginState() {
+    const authToken = getAuthToken();
+    
+    if (authToken) {
+      // L'utilisateur est connecté en tant qu'administrateur, donc afficher les fonctions d'édition
+      // Changer le bouton de connexion en bouton de déconnexion
+    const header = document.querySelector('header');
+    const line2 = header.querySelector('.line2');
+    const nav = document.querySelector('nav')
+    const ulElement = document.getElementById('ulLog')
+    const logoutDiv = document.createElement('div');
+    logoutDiv.className = 'logout';
+    const logoutLink = document.createElement('a');
+    logoutLink.textContent = 'logout';
+    logoutLink.href = '#';
+    logoutLink.addEventListener('click', function() {
+      localStorage.clear();
+      window.location.reload();
+    });
+    logoutLink.classList.add("navA");
+    logoutDiv.appendChild(logoutLink);
+    ulElement.insertBefore(logoutDiv, ulElement.children[2]);
+    nav.appendChild(ul)
+    line2.appendChild(nav)
+    header.appendChild(line2)
 
-      console.log(responseData.token); // faire quelque chose avec les données de la réponse
-      
-    } catch (err) {
-      console.error(err);
-    }
-  });
+    
+  } else {
+    // L'utilisateur n'est pas connecté en tant qu'administrateur, donc afficher LOGIN
+    const header = document.querySelector('header');
+    const line2 = header.querySelector('.line2');
+    const nav = document.querySelector('nav')
+    const ulElement = document.getElementById('ulLog')
+    const logoutDiv = document.createElement('div');
+    logoutDiv.className = 'logout';
+    const logoutLink = document.createElement('a');
+    logoutLink.textContent = 'login';
+    logoutLink.href = 'Login.html';
+    logoutLink.addEventListener('click', function() {
+    localStorage.removeItem(tokenKey);
+    window.location.reload();
+    });
+    logoutLink.classList.add("navA");
+    logoutDiv.appendChild(logoutLink);
+    ulElement.insertBefore(logoutDiv, ulElement.children[2]);
+    nav.appendChild(ul)
+    line2.appendChild(nav)
+    header.appendChild(line2)
 
-  /****** admin mode ******/
+  }
+}
 
-  const token = localStorage.getItem('token');
+toggleLoginState();
 
 

@@ -23,15 +23,6 @@
 			</ul>
 		</nav>
 	</div>
-		<h1>Sophie Bluel <span>Architecte d'intérieur</span></h1>
-		<nav>
-			<ul id="ulLog">
-				<li><a href="#portfolio">projets</a></li>
-				<li><a href="#contact">contact</a></li>
-				<li><a href=""><img src="./assets/icons/instagram.png" alt="Instagram"></a></li>
-			</ul>
-		</nav>
-	</div>
 </header>
 <main>
 	<section id="introduction">
@@ -46,7 +37,29 @@
 		</article>
 	</section>
 	<section id="portfolio">
-		<h2>Mes Projets</h2>
+		<div class="projetsEdit">
+			<h2 id="h2Projets">Mes Projets</h2>
+		</div>
+		<div class="overlay"></div>
+		<div class="modal">
+			<button class="modalClose"><i class="fa-sharp fa-solid fa-xmark"></i></button>
+			<div class="modalHeader">
+				<h3 class="modalTitle">Galerie photo</h3>
+			</div>
+			<div class="modalMain"></div>
+				<div class="modalWorks">
+					<figure class="modalFigure">
+						<img src="assets/images/abajour-tahina.png" alt="Abajour Tahina">
+						<button class="deleteWork"><i class="fa-sharp fa-solid fa-trash-can"></i></button>
+						<figcaption>éditer</figcaption>
+					</figure>
+				</div>
+			<div class="modalFooter">
+				<input type="submit" value="Ajouter une photo">
+				<a href="#">Supprimer la galerie</a>
+			</div>
+		</div>
+
 		<div class="boutons" id="filters">
 				<button id="All" class="stylebutt filter-button" data-filter="All">Tous</button>
 				<button id="Objets" class="stylebutt filter-button" data-filter="Objets">Objets</button>

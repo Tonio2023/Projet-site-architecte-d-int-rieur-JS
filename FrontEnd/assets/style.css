@@ -399,3 +399,114 @@ header i {
 .portfolioEdit {
 	margin-top: 100px;
 }
+.none {
+	display: none;
+}
+/**************************modal***************************/
+.openModal {
+	display: block;
+}
+.overlay {
+	position: fixed;
+	top:0;
+	left:0;
+	width: 100vw;
+	height: 100vh;
+	background-color: rgba(0, 0, 0, 0.3);
+	display:none;
+}
+.modal {
+	position:fixed;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	width: 43%;
+	height: 50%;
+	background-color: white;
+	border-radius: 10px;
+	display: none;
+}
+.modalClose {
+	position: absolute;
+	top: 8px;
+	right: 8px;
+	cursor: pointer;
+	margin-top: 32px;
+	margin-right: 36px;
+	background-color: #FFFFFF;
+	border: 1px solid #ffffff;
+	color: rgb(0, 0, 0);
+	transition: 0.3s all ease-in-out;
+}
+.modalClose:hover {
+	transform: rotate(360deg);
+}
+.modalClose i {
+	font-size: 22px;
+}
+.modalHeader {
+	height: 20%;
+	display: flex;
+	justify-content: center;
+}
+.modalTitle {
+	font-family: 'Work Sans';
+	font-style: normal;
+	font-weight: 100;
+	font-size: 26px;
+	line-height: 30px;
+	text-align: center;
+	color: #000000;
+	height: 30px;
+	margin: auto;	
+}
+.modalWorks {
+	height: 60%;
+	margin-left: 10%;
+	margin-right: 10%;
+	display: flex;
+	flex-wrap: wrap;
+	border-bottom: 1px solid #B3B3B3
+}
+.modalFigure {
+	width: 17%;
+	height: 28%;
+}
+.modalFigure img {
+	width:100%;
+	height: 88%;
+}
+.deleteWork {
+	position: relative;
+	top: -118px;
+	left: 67px;
+	background-color: #000000;
+	color: #FFFFFF;
+	border-width: 0ch;
+	border-radius: 3px;
+	height: 23px;
+	width: 22px;
+}
+.modalWorks figcaption {
+	position: relative;
+	top: -24px;
+	font-size: 15px
+}
+.modalFooter {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+.modalFooter input {
+	height: 30px;
+	width: 200px;
+	border: 1px white;
+	margin-top: 35px;
+	font-size: 12px;
+}
+.modalFooter a {
+	text-decoration: none;
+	color: #D65353;
+	font-size: 10px;
+	margin-top: 5px;
+}

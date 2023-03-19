@@ -21,6 +21,7 @@ fetch('http://localhost:5678/api/works')
     filteredWorks.forEach(work => {
       // Créer un élément figure avec l'image et le titre
       const figure = document.createElement('figure');
+      figure.setAttribute("id", work.id);
       const img = document.createElement('img');
       img.src = work.imageUrl;
       img.alt = 'Image';
@@ -128,10 +129,7 @@ fetch('http://localhost:5678/api/works')
     editIcon.classList.add('fa-regular', 'fa-pen-to-square');
     const editLink = document.createElement('a');
     editLink.href = '#';
-<<<<<<< HEAD
-    editLink.onclick = "function openModal()";
-=======
->>>>>>> d4a1dac32c3a2f40e7f8c69043619de9b52c1b71
+    editLink.setAttribute("onclick", "openModal()");
     editLink.textContent = 'modifier';
     projetEditDiv.insertBefore(editLink, projetEditDiv.lastChild.nextSibling);
     projetEditDiv.insertBefore(editIcon, projetEditDiv.lastChild.nextSibling);
@@ -195,5 +193,7 @@ fetch('http://localhost:5678/api/works')
 }
 
 toggleLoginState();
+
+
 
 

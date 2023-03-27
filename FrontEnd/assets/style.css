@@ -428,7 +428,6 @@ header i {
 .openModal {
     display: block;
 }
-
 .modal2 {
     display: none;
 }
@@ -441,7 +440,6 @@ header i {
     background-color: #FFFFFF;
     border: 1px solid #ffffff;
     color: rgb(0, 0, 0);
-	
     transition: 0.3s all ease-in-out;
 }
 .modalClose:hover {
@@ -455,7 +453,6 @@ header i {
     display: flex;
     justify-content: center;
 }
-
 .modalTitle {
     font-family: 'Work Sans';
     font-style: normal;
@@ -604,7 +601,6 @@ header i {
     color: #444444;
     opacity: 0.7;
     display: ;
-
 }
 .greyLineBottom {
     display: flex;
@@ -639,9 +635,7 @@ header i {
     background-size: 20px 15px;
     font-family:'Work Sans';
     text-align: center;
-
 }
-
 .greyLineBottom label {
     margin: 2em 0 1em 0;
 }
@@ -656,4 +650,3 @@ header i {
     font-size: 110%;
     margin-top: 6%;
 }
-

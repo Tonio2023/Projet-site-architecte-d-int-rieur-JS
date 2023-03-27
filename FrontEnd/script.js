@@ -117,13 +117,14 @@ fetch('http://localhost:5678/api/works')
     <input type="submit" id="buttonAdmin" value="publier les changements">
     `;
     header.insertBefore(editionDiv, header.firstChild);
-    
+    // Créer une div "introEdit" avec une icône et un paragraphe "modifier"
     const figure = document.querySelector('figure');
     const introEdit = document.createElement('div');
     introEdit.className = 'introEdit';
     introEdit.innerHTML = '<i class="fa-regular fa-pen-to-square"></i><p>modifier</p>';
     figure.insertBefore(introEdit, figure.children[1]);
-    
+
+    // Ajouter un lien "modifier" et une icône pour chaque projet de la page
     const projetEditDiv = document.querySelector('.projetsEdit');
     const editIcon = document.createElement('i');
     editIcon.classList.add('fa-regular', 'fa-pen-to-square');
@@ -133,11 +134,11 @@ fetch('http://localhost:5678/api/works')
     editLink.textContent = 'modifier';
     projetEditDiv.insertBefore(editLink, projetEditDiv.lastChild.nextSibling);
     projetEditDiv.insertBefore(editIcon, projetEditDiv.lastChild.nextSibling);
-
+    // Cacher les filtres
     document.getElementById("filters").classList.add("none");
 
   }
-  
+   // variable pour la clé du token d'authentification
    const tokenKey = 'auth-token';
   
   function toggleLoginState() {

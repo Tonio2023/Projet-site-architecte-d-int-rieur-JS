@@ -6,7 +6,7 @@ function openModal () {
     
     
 
-    if (!isLoaded) { // Vérifiez si les photos sont déjà chargées
+    if (!isLoaded) { // si les photos ne sont pas encore chargées
         fetch('http://localhost:5678/api/works')
         .then(response => {
             return response.json();
@@ -65,9 +65,9 @@ function openModal () {
                 });
                     
 
-       
+                // Ajout du bouton à la figure
                 figure.appendChild(deleteBtn);
-
+                // Création du figcaption
                 const figcaption = document.createElement('figcaption');
                 figcaption.textContent = captionText;
 
@@ -78,7 +78,7 @@ function openModal () {
                 // Insérer la figure dans la <div>
                 modalWorks.appendChild(figure);
             });
-            isLoaded = true; // Mettez à jour la variable de contrôle après le chargement initial
+            isLoaded = true; // Mise à jour de la variable 
         }); 
         }
         const modalBackground = document.querySelector('.overlay');
@@ -122,34 +122,36 @@ function prevModal() {
 // fonction afficher photo
 
 const image_input = document.querySelector('#image_input');
-let imageUrl = '';
+let imageUrl = ''; // Initialisez une variable vide qui sera utilisée pour stocker l'URL de l'image sélectionnée
 
 const imageInput = document.querySelector('#image_input');
-imageInput.addEventListener('change', (event) => {
-  const file = event.target.files[0];
-  const reader = new FileReader();
 
+// Ajoutez un écouteur d'événements qui se déclenche lorsque la valeur de "imageInput" change
+imageInput.addEventListener('change', (event) => {
+  const file = event.target.files[0];  // Récupérez le fichier image sélectionné par l'utilisateur à partir de l'objet événement "event".
+  const reader = new FileReader();  // Créez un nouvel objet FileReader qui sera utilisé pour lire le contenu du fichier image.
+
+  // Ajoutez un écouteur d'événements qui se déclenche lorsque le contenu du fichier image est chargé.
   reader.addEventListener('load', () => {
     imageUrl = reader.result;
     // Créez un objet URL à partir de l'image base64
     const url = URL.createObjectURL(file);
     // Utilisez l'URL de l'objet pour afficher l'image
     const img = document.createElement('img');
+    // Définissez l'URL de l'image comme la source de l'élément HTML "img".
     img.src = url;
     img.classList.add('imgAjout');
     document.querySelector('#display_image').appendChild(img);
   });
-
+  // Lit le contenu du fichier image sous forme d'URL encodée en base64.
   reader.readAsDataURL(file);
-
 
     document.querySelector("#display_image").style.display = 'block';
     document.querySelector("#labelAjout").style.display = 'none';
     document.querySelector("#paraAjout").style.display = 'none';
     document.querySelector("#iconeAjout").style.display = 'none';
-    
-});
 
+});
 
 
 // Envoi nouveau projet
@@ -159,12 +161,16 @@ const imageInpu = document.getElementById('image_input');
 const titleInput = document.getElementById('title');
 const categoryInput = document.getElementById('category');
 
+// écouteur d'événements qui se déclenche lorsque le formulaire est soumis.
 form.addEventListener('submit', (e) => {
+  // Empêche le comportement par défaut du formulaire (l'envoi de données et le rechargement de la page).
   e.preventDefault();
+  // Créez un nouvel objet FormData qui sera utilisé pour envoyer les données du formulaire (image, titre, catégorie).
   const formData = new FormData();
-  formData.append('image', imageInput.files[0]);
-  formData.append('title', titleInput.value);
-  formData.append('category', categoryInput.value);
+  formData.append('image', imageInput.files[0]); // Ajoutez le fichier image sélectionné par l'utilisateur à FormData.
+  formData.append('title', titleInput.value); // Ajoutez la valeur du champ de saisie de titre à FormData.
+  formData.append('category', categoryInput.value); // Ajoutez la valeur du champ de saisie de catégorie à FormData.
+
 
   const token = localStorage.getItem('token')
   fetch('http://localhost:5678/api/works', {
@@ -175,15 +181,17 @@ form.addEventListener('submit', (e) => {
     },
   })
   .then(response => {
+    // Si la réponse n'est pas OK (200), lancez une erreur.
     if (!response.ok) {
       throw new Error('Erreur lors de la requête');
     }
+    // Si la réponse est OK, renvoyez les données de la réponse sous forme d'objet JSON.
     return response.json();
   })
   .then(data => {
-    console.log(data);
+    console.log(data); // Faites quelque chose avec les données renvoyées (probablement les afficher dans l'interface utilisateur).
   })
   .catch(error => {
-    console.error(error);
+    console.error(error); 
   });
 });

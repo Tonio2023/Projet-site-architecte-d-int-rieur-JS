@@ -156,6 +156,7 @@ a:hover {
     text-align: center;
     background-color: #1D6154;
     color:aliceblue;
+    cursor: pointer;
 }
 .boutons :focus {
     background-color: #1D6154;
@@ -260,8 +261,6 @@ footer nav ul {
 }
 
 /************************ Page de Connexion ***********************/
-.navLog {
-}
 ul {
     gap:25px;
 }
@@ -301,6 +300,7 @@ ul {
 .logSection input[type="submit"] {
     margin:auto;
     margin-top: 37px;
+    cursor: pointer;
 }
 .passForgot {
     margin: auto;
@@ -312,7 +312,6 @@ ul {
     line-height: 16px;
     text-decoration-line: underline;
     color: #3D3D3D
-
 }
 
 /************************* MODE EDITION **************************/
@@ -353,7 +352,6 @@ ul {
     padding-top: 22px;
     margin-right: 18px;
     font-size: 12px;
-    
 }
 header i {
     padding-top: 19px;

@@ -53,10 +53,16 @@ function openModal () {
                     })
                     .then(response => {
                     if (response.ok) {
+                      const modalWorks = document.querySelector('.modalWorks');
+                      const workToRemove = document.getElementById(workId);
+                      modalWorks.removeChild(workToRemove); // Suppression de l'élément de travail correspondant du DOM
 
-                    const modalWorks = document.querySelector('.modalWorks');
-                    const workToRemove = document.getElementById(workId);
-                    modalWorks.removeChild(workToRemove); // Suppression de l'élément de travail correspondant du DOM
+                       // Suppression de l'élément correspondant dans la page d'accueil
+                      const gallery = document.querySelector('.gallery');
+                      const portfolioWorkToRemove = document.getElementById(workId);
+                      if (portfolioWorkToRemove) {
+                        gallery.removeChild(portfolioWorkToRemove);
+                      }
                     }
                     })
                     .catch(error => {
@@ -91,6 +97,12 @@ closeButton.addEventListener('click', closeModal);
 function closeModal () {
     document.querySelector('.overlay').style.display = 'none';
     document.querySelector('.modal').style.display = 'none';
+    const selectElement = document.querySelector("#category");
+    selectElement.selectedIndex = 0;
+    const titleElement = document.getElementById('title');
+    titleElement.value = '';
+    const imageInput = document.querySelector('#image-input');
+    imageInput.value = '';
 }
 
 // modale suivante
@@ -165,6 +177,13 @@ const categoryInput = document.getElementById('category');
 form.addEventListener('submit', (e) => {
   // Empêche le comportement par défaut du formulaire (l'envoi de données et le rechargement de la page).
   e.preventDefault();
+  
+  const imageFile = imageInput.files[0];
+  if (!imageFile) {
+    alert('Veuillez télécharger une image.');
+    return;
+  }
+
   // Créez un nouvel objet FormData qui sera utilisé pour envoyer les données du formulaire (image, titre, catégorie).
   const formData = new FormData();
   formData.append('image', imageInput.files[0]); // Ajoutez le fichier image sélectionné par l'utilisateur à FormData.

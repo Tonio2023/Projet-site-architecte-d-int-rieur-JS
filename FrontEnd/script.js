@@ -13,15 +13,19 @@ fetch('http://localhost:5678/api/works')
   function afficherWorks(categoryId) {
     // Vider la galerie de travaux
     gallery.innerHTML = '';
+
     // Filtrer les travaux en fonction de leur categoryId
     const filteredWorks = categoryId === 'All' ? data : data.filter(work => {
       return work.categoryId === categoryId;
     });
+
     // Boucler sur les travaux filtrés et les afficher
     filteredWorks.forEach(work => {
+      const workId = work.id
+      console.log(workId);
       // Créer un élément figure avec l'image et le titre
       const figure = document.createElement('figure');
-      figure.setAttribute("id", work.id);
+      figure.setAttribute("id", workId);
       const img = document.createElement('img');
       img.src = work.imageUrl;
       img.alt = 'Image';
@@ -128,12 +132,20 @@ fetch('http://localhost:5678/api/works')
     const projetEditDiv = document.querySelector('.projetsEdit');
     const editIcon = document.createElement('i');
     editIcon.classList.add('fa-regular', 'fa-pen-to-square');
+    editIcon.setAttribute("onclick", "openModal()");
     const editLink = document.createElement('a');
     editLink.href = '#';
     editLink.setAttribute("onclick", "openModal()");
     editLink.textContent = 'modifier';
-    projetEditDiv.insertBefore(editLink, projetEditDiv.lastChild.nextSibling);
-    projetEditDiv.insertBefore(editIcon, projetEditDiv.lastChild.nextSibling);
+
+    const h2Element = document.getElementById('h2Projets')
+
+    // Insérez editIcon juste après l'élément h2
+    h2Element.insertAdjacentElement("afterend", editIcon);
+
+    // Insérez editLink juste après editIcon
+    editIcon.insertAdjacentElement("afterend", editLink);
+
     // Cacher les filtres
     document.getElementById("filters").classList.add("none");
 

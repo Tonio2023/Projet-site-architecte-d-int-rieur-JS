@@ -167,6 +167,9 @@ imageInput.addEventListener('change', (event) => {
 });
 
 
+
+
+
 // Envoi nouveau projet
 
 const form = document.getElementById('form');
@@ -184,20 +187,20 @@ form.addEventListener('submit', (e) => {
     alert('Veuillez télécharger une image.');
     return;
   }
-
+  
   // Créez un nouvel objet FormData qui sera utilisé pour envoyer les données du formulaire (image, titre, catégorie).
   const formData = new FormData();
   formData.append('image', imageInput.files[0]); // Ajoutez le fichier image sélectionné par l'utilisateur à FormData.
   formData.append('title', titleInput.value); // Ajoutez la valeur du champ de saisie de titre à FormData.
   formData.append('category', categoryInput.value); // Ajoutez la valeur du champ de saisie de catégorie à FormData.
-
-
+  
+  
   const token = localStorage.getItem('token')
   fetch('http://localhost:5678/api/works', {
     method: 'POST',
     body: formData,
     headers: {
-        'Authorization': `Bearer ${token}`
+      'Authorization': `Bearer ${token}`
     },
   })
   .then(response => {
@@ -209,15 +212,86 @@ form.addEventListener('submit', (e) => {
     return response.json();
   })
   .then(data => {
-    console.log(data); // Faites quelque chose avec les données renvoyées (probablement les afficher dans l'interface utilisateur).
+    // Faites quelque chose avec les données renvoyées (probablement les afficher dans l'interface utilisateur).
+    
+    const workId = data.id
+    console.log(workId);
+    //création de l'élément pour le portfolio
     const newFigureElement = document.createElement('figure');
     newFigureElement.classList.add('project');
+    newFigureElement.setAttribute("id", workId);
     newFigureElement.innerHTML = `
     <img src="${data.imageUrl}" alt="${data.title}">
     <h3>${data.title}</h3>
     `;
     const gallery = document.querySelector('.gallery');
     gallery.appendChild(newFigureElement);
+    
+    
+    
+    
+    // création de l'élément pour la modale
+    const modalFigureElement = document.createElement('figure');
+    modalFigureElement.classList.add('modalFigure');
+    modalFigureElement.setAttribute("id", workId);
+    modalFigureElement.innerHTML = `
+    <img src="${data.imageUrl}" alt="${data.title}">
+     <figcaption>éditer</figcaption>
+    `;
+    // Création du bouton
+    const deleteBtn = document.createElement('button');
+    deleteBtn.type = 'button';
+    deleteBtn.classList.add('deleteWork');
+    deleteBtn.dataset.id = data.id;
+    
+    const deleteIcon = document.createElement('i');
+    deleteIcon.classList.add('fa-sharp', 'fa-solid', 'fa-trash-can');
+    deleteBtn.appendChild(deleteIcon);
+
+    deleteBtn.addEventListener('click', (event) => {
+      event.preventDefault();
+      const token = localStorage.getItem('token')
+      // Récupération de l'ID du travail à supprimer
+      fetch(`http://localhost:5678/api/works/${workId}`, {
+        method: 'DELETE',
+        headers: {
+          'Authorization': `Bearer ${token}`
+        }
+      })
+      .then(response => {
+        if (response.ok) {
+          // Suppression de l'élément de travail correspondant du DOM
+          const workId = data.id
+          const modalWorks = document.querySelector('.modalWorks');
+          const workToRemove = document.getElementById(workId);
+          
+          modalWorks.removeChild(workToRemove);
+    
+          // Suppression de l'élément correspondant dans la page d'accueil
+          const gallery = document.querySelector('.gallery');
+          const portfolioWorkToRemove = document.getElementById(workId);
+    
+          if (portfolioWorkToRemove) {
+            gallery.removeChild(portfolioWorkToRemove);
+          }
+        } else {
+          throw new Error('Erreur lors de la suppression');
+        }
+      })
+      .catch(error => {
+        console.error('Error:', error);
+      });
+    });
+    
+
+    // Ajout du bouton à la figure
+    modalFigureElement.insertBefore(deleteBtn, modalFigureElement.firstChild);
+    
+    const modalContent = document.querySelector('.modalWorks');
+    modalContent.appendChild(modalFigureElement);
+    
+    // Réinitialisez le formulaire.
+    form.reset();    
   })
   .catch(error => {
     console.error(error); 

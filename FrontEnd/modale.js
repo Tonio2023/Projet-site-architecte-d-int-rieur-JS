@@ -60,6 +60,7 @@ function openModal () {
                        // Suppression de l'élément correspondant dans la page d'accueil
                       const gallery = document.querySelector('.gallery');
                       const portfolioWorkToRemove = document.getElementById(workId);
+
                       if (portfolioWorkToRemove) {
                         gallery.removeChild(portfolioWorkToRemove);
                       }
@@ -209,6 +210,14 @@ form.addEventListener('submit', (e) => {
   })
   .then(data => {
     console.log(data); // Faites quelque chose avec les données renvoyées (probablement les afficher dans l'interface utilisateur).
+    const newFigureElement = document.createElement('figure');
+    newFigureElement.classList.add('project');
+    newFigureElement.innerHTML = `
+    <img src="${data.imageUrl}" alt="${data.title}">
+    <h3>${data.title}</h3>
+    `;
+    const gallery = document.querySelector('.gallery');
+    gallery.appendChild(newFigureElement);
   })
   .catch(error => {
     console.error(error); 

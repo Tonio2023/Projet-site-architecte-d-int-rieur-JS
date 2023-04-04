@@ -310,6 +310,11 @@ form.addEventListener('submit', (e) => {
     document.querySelector("#labelAjout").style.display = 'block';
     document.querySelector("#paraAjout").style.display = 'block';
     document.querySelector("#iconeAjout").style.display = 'block';
+
+    var element = document.querySelector(".fa-image::before");
+    element.style.content = "\\f03e";
+    element.style.paddingLeft = "24px";
+
   })
   .catch(error => {
     console.error(error); 

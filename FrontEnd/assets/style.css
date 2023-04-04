@@ -568,17 +568,17 @@ header i {
     height: 100%;
 } 
 .greyBack i {
-    width: 25%;
+    width: 13%;
     height: 30%;
     font-size: 400%;
     display: flex;
     justify-content: center;
     margin-top: 7%;
     margin-bottom: 3%;
-    margin-left: 11%;
     color:#B9C5CC;
     display: ;
 }
+
 .greyBack label {
     background-color:#CBD6DC;
     font-family: 'Work Sans';

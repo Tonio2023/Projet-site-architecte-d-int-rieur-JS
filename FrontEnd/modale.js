@@ -104,6 +104,14 @@ function closeModal () {
     titleElement.value = '';
     const imageInput = document.querySelector('#image-input');
     imageInput.value = '';
+    const displayImage = document.querySelector('#display_image');
+    while (displayImage.firstChild) {
+    displayImage.removeChild(displayImage.firstChild);
+    }
+
+    const form = document.getElementById('form');
+    form.reset();
+
 }
 
 // modale suivante
@@ -147,6 +155,12 @@ imageInput.addEventListener('change', (event) => {
   // Ajoutez un écouteur d'événements qui se déclenche lorsque le contenu du fichier image est chargé.
   reader.addEventListener('load', () => {
     imageUrl = reader.result;
+
+    const displayImage = document.querySelector('#display_image');
+    while (displayImage.firstChild) {
+      displayImage.removeChild(displayImage.firstChild);
+    }
+
     // Créez un objet URL à partir de l'image base64
     const url = URL.createObjectURL(file);
     // Utilisez l'URL de l'objet pour afficher l'image
@@ -292,6 +306,10 @@ form.addEventListener('submit', (e) => {
     
     // Réinitialisez le formulaire.
     form.reset();    
+    document.querySelector("#display_image").style.display = 'none';
+    document.querySelector("#labelAjout").style.display = 'block';
+    document.querySelector("#paraAjout").style.display = 'block';
+    document.querySelector("#iconeAjout").style.display = 'block';
   })
   .catch(error => {
     console.error(error); 

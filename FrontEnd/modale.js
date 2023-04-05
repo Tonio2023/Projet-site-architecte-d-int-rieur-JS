@@ -102,13 +102,16 @@ function closeModal () {
     selectElement.selectedIndex = 0;
     const titleElement = document.getElementById('title');
     titleElement.value = '';
-    const imageInput = document.querySelector('#image-input');
+    const imageInput = document.querySelector('#image_input');
     imageInput.value = '';
     const displayImage = document.querySelector('#display_image');
     while (displayImage.firstChild) {
     displayImage.removeChild(displayImage.firstChild);
     }
-
+    document.querySelector("#display_image").style.display = 'none';
+    document.querySelector("#labelAjout").style.display = 'block';
+    document.querySelector("#paraAjout").style.display = 'block';
+    document.querySelector("#iconeAjout").style.display = 'block';
     const form = document.getElementById('form');
     form.reset();
 
@@ -197,10 +200,26 @@ form.addEventListener('submit', (e) => {
   e.preventDefault();
   
   const imageFile = imageInput.files[0];
+  const title = titleInput.value;
+  const category = categoryInput.value;
+
   if (!imageFile) {
     alert('Veuillez télécharger une image.');
     return;
   }
+  if (title.trim() === '') {
+    alert('Le titre est obligatoire.');
+    e.preventDefault();
+    return;
+  }
+  if (category === '') {
+    alert('La catégorie est obligatoire.');
+    e.preventDefault();
+    return;
+  }
+  
+
+  // Le formulaire est valide, on peut soumettre les données.
   
   // Créez un nouvel objet FormData qui sera utilisé pour envoyer les données du formulaire (image, titre, catégorie).
   const formData = new FormData();
@@ -310,10 +329,6 @@ form.addEventListener('submit', (e) => {
     document.querySelector("#labelAjout").style.display = 'block';
     document.querySelector("#paraAjout").style.display = 'block';
     document.querySelector("#iconeAjout").style.display = 'block';
-
-    var element = document.querySelector(".fa-image::before");
-    element.style.content = "\\f03e";
-    element.style.paddingLeft = "24px";
 
   })
   .catch(error => {
